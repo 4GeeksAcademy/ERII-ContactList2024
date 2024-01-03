@@ -12,7 +12,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					background: "white",
 					initial: "white"
 				}
-			]
+			],
+			contacts: [],
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -37,7 +38,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//reset the global store
 				setStore({ demo: demo });
+			},
+			loadContacts: ()=> {
+				fetch("https://playground.4geeks.com/apis/fake/contact/agenda/eurorincon")
+					.then((response)=> response.json())
+					.then((response)=> {
+						console.log(response);
+						setStore({
+							contacts: response
+						})
+					})
+					.catch(error =>(console.log(error)))
 			}
+		
+			
 		}
 	};
 };
