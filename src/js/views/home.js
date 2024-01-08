@@ -36,11 +36,12 @@ export const Home = () => {
 										{contact.email}
 									</div>
 								</div>
-								<div className="col-md-2 col-2">
+								<div className="col-md-2 col-2 ">
 									<button
 										className="btn"
+										data-bs-toggle="modal" data-bs-target="#exampleModal"
 										type="button"
-										onClick={()=> {
+										onClick={() => {
 											actions.contactToDelete(contact);
 										}}
 									>
@@ -49,13 +50,34 @@ export const Home = () => {
 									<button
 										className="btn"
 										type="button"
-										onClick={()=> {
+										onClick={() => {
 											actions.seeContact(contact);
 											navigate('/editForm')
 										}}
 									>
 										<i className="fa-solid fa-pencil" />
 									</button>
+
+									<div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+										<div className="modal-dialog">
+											<div className="modal-content">
+												<div className="modal-body">
+													Are you sure you want delete {store.contactToDelete.full_name} ?
+												</div>
+												<div className="modal-footer">
+													<button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+													<button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={() => {
+														actions.deleteContact(store.contactToDelete.id)
+													}}>Delete</button>
+												</div>
+											</div>
+										</div>
+									</div>
+
+
+
+
+
 
 								</div>
 							</li>

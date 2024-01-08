@@ -14,6 +14,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			],
 			contacts: [],
+			contact: {},
+			contactToDelete: {},
+
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -39,19 +42,48 @@ const getState = ({ getStore, getActions, setStore }) => {
 				//reset the global store
 				setStore({ demo: demo });
 			},
-			loadContacts: ()=> {
+			loadContacts: () => {
 				fetch("https://playground.4geeks.com/apis/fake/contact/agenda/eurorincon")
-					.then((response)=> response.json())
-					.then((response)=> {
+					.then((response) => response.json())
+					.then((response) => {
 						console.log(response);
 						setStore({
 							contacts: response
 						})
 					})
-					.catch(error =>(console.log(error)))
+					.catch(error => (console.log(error)))
+			},
+			seeContact: (contact) => {
+				console.log(contact);
+				setStore({ contact: contact })
+
+			},
+			contactToDelete: (contact) => {
+				setStore({ contactToDelete: contact });
+
+			},
+			deleteContact: (contactId) => {
+				console.log(contactId);
+				fetch(`https://playground.4geeks.com/apis/fake/contact/${contactId}`, { method: 'DELETE' })
+					.then((response) => response.text())
+					.then((response) => {
+						console.log(response);
+						return fetch(`https://playground.4geeks.com/apis/fake/contact/agenda/eurorincon`);
+					})
+					.then((response) => response.json())
+					.then((response) => {
+						console.log(response);
+						setStore({ contacts: response })
+
+					})
+					.catch(error => {
+						console.log("error", error)
+					})
+
 			}
-		
-			
+
+
+
 		}
 	};
 };
