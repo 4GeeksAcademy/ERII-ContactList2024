@@ -58,10 +58,8 @@ export const Form = () => {
                     onChange={(e) => handleChange(e)}
                 />
             </div>
-            <button type="submit" className="btn btn-primary">Submit</button>
-            <Link to={"/"} type="button" className="btn btn-danger">
-                Cancel
-            </Link>
+            <button type="submit" className="btn btn-success">Submit</button>
+            <Link to={"/"} type="button" className="btn btn-danger ms-3 ">Cancel</Link>
         </form>
     )
 

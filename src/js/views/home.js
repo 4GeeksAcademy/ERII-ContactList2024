@@ -20,7 +20,7 @@ export const Home = () => {
 						return (
 							<li className="row contact" key={contact.id}>
 								<div className="col-md-3 photo">
-									<img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" className="rounded-circle" />
+									<img src="https://picsum.photos/150/150" className="rounded-circle" />
 								</div>
 								<div className="col-md-7 col-10">
 									<div className="name">
@@ -66,7 +66,7 @@ export const Home = () => {
 												</div>
 												<div className="modal-footer">
 													<button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-													<button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={() => {
+													<button type="button" className="btn btn-danger" data-bs-dismiss="modal" onClick={() => {
 														actions.deleteContact(store.contactToDelete.id)
 													}}>Delete</button>
 												</div>

@@ -56,7 +56,7 @@ export const EditForm = () => {
                     onChange={(e) => handleChange(e)}
                 />
             </div>
-            <button type="submit" className="btn btn-primary">Submit</button>
+            <button type="submit" className="btn btn-success me-3 ">Submit</button>
             <Link to={"/"} type="button" className="btn btn-danger">
                 Cancel
             </Link>
